@@ -8,7 +8,7 @@
                 <p>{{event.start_date}} to {{event.end_date}}</p>
             </div>
             <div class="item item-body" ng-show="event.event_district_string">
-               District <span>{{event.event_district_string}}</span>
+                District <span>{{event.event_district_string}}</span>
             </div>
             <div class="item item-body" ng-show="event.venue_address">
                 <span>{{event.venue_address}}</span>
@@ -19,12 +19,31 @@
             <div class="item item-body" ng-show="event.website">
                 <a href="{{event.website}}">{{event.website}}</a>
             </div>
-            <div class="item item-body" ng-show="event.teams">
-                Team count: {{event.teams.length}}
+
+            <div class="item item-body">
+                <ion-spinner icon="spiral" ng-hide="teams"></ion-spinner>
+                <div ng-show="teams">
+                    Team count: {{teams.length}}
+                </div>
             </div>
-            <div class="item item-body" ng-show="event.matches">
-                Match count: {{event.matches.length}}
+
+            <div class="item item-body">
+                <ion-spinner icon="spiral" ng-hide="matches"></ion-spinner>
+                <div ng-show="matches">
+                    Match count: {{matches.length}}
+                </div>
             </div>
-        </div>
-    </ion-content>
+            
+            <div class="card" ng-show="teams">
+                <div class="item item-divider">
+                   Teams
+                </div>
+                    <ion-list>
+                        <ion-item ng-repeat="team in teams | orderBy: teamNumberInt" href="#/app/team-detail/{{team.key}}">
+                            {{team.team_number}} {{team.name}}
+                        </ion-item>
+                    </ion-list>
+                </div>
+
+</ion-content>
 </ion-view>

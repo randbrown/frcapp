@@ -42,11 +42,28 @@ angular.module('starter.services', [])
         });
     }
 
+    function getEventTeamsFunc(eventKey) {
+        return $http({
+            method: 'GET',
+            url: 'http://www.thebluealliance.com/api/v2/event/' + eventKey + '/teams',
+            headers: config.headers
+        });
+    }
+    function getEventMatchesFunc(eventKey) {
+        return $http({
+            method: 'GET',
+            url: 'http://www.thebluealliance.com/api/v2/event/' + eventKey + '/matches',
+            headers: config.headers
+        });
+    }
+
     return {
         getTeams: getTeamsFunc,
         getTeam: getTeamFunc,
         getEvents: getEventsFunc,
-        getEvent: getEventFunc
+        getEvent: getEventFunc,
+        getEventTeams: getEventTeamsFunc,
+        getEventMatches: getEventMatchesFunc,
 
     }
 }

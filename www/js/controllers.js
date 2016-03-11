@@ -64,7 +64,13 @@ angular.module('starter.controllers', [])
     frcapiService.getEvent($stateParams.key).then(function (response) {
         $scope.event = response.data;
     })
+    frcapiService.getEventTeams($stateParams.key).then(function (response) {
+        $scope.teams = response.data;
+    })
 
+    frcapiService.getEventMatches($stateParams.key).then(function (response) {
+        $scope.matches = response.data;
+    })
 })
 .controller('MatchCtrl', function ($scope, $stateParams) {
 });
