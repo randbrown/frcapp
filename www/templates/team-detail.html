@@ -4,11 +4,11 @@
         <div class="list card">
             <ion-spinner icon="spiral" ng-hide="loadCompleted"></ion-spinner>
             <div class="item">
-                <h2>{{team.name}}</h2>
+                <h2>{{team.nickname}}</h2>
                 <p>{{team.location}}</p>
             </div>
             <div class="item item-body" ng-show="team.nickname">
-                <span>{{team.nickname}}</span>
+                <span>{{team.name}}</span>
             </div>
             <div class="item item-body" ng-show="team.motto">
                 <span>{{team.motto}}</span>

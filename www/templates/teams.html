@@ -3,7 +3,7 @@
         <ion-spinner icon="spiral" ng-hide="loadCompleted"></ion-spinner>
         <ion-list>
             <ion-item ng-repeat="team in teams" href="#/app/team-detail/{{team.key}}">
-                {{team.team_number}} {{team.name}}
+                {{team.team_number}} {{team.nickname}}
             </ion-item>
         </ion-list>
         <ion-infinite-scroll ng-if="moreDataCanBeLoaded()"
