@@ -1,0 +1,30 @@
+<ion-view>
+    <ion-nav-title>{{event.short_name}}</ion-nav-title>
+    <ion-content>
+        <div class="list card">
+            <div class="item">
+                <h2>{{event.name}}</h2>
+                <p>{{event.location}}</p>
+                <p>{{event.start_date}} to {{event.end_date}}</p>
+            </div>
+            <div class="item item-body" ng-show="event.event_district_string">
+               District <span>{{event.event_district_string}}</span>
+            </div>
+            <div class="item item-body" ng-show="event.venue_address">
+                <span>{{event.venue_address}}</span>
+            </div>
+            <div class="item item-body" ng-show="event.event_code">
+                Event Code: <span>{{event.event_code}}</span>
+            </div>
+            <div class="item item-body" ng-show="event.website">
+                <a href="{{event.website}}">{{event.website}}</a>
+            </div>
+            <div class="item item-body" ng-show="event.teams">
+                Team count: {{event.teams.length}}
+            </div>
+            <div class="item item-body" ng-show="event.matches">
+                Match count: {{event.matches.length}}
+            </div>
+        </div>
+    </ion-content>
+</ion-view>

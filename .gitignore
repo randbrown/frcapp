@@ -48,7 +48,7 @@ Temporary Items
 
 
 node_modules
-www
+
 .tmp
 .sass-cache
 <%= appPath %>/bower_components

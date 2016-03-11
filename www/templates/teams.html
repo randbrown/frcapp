@@ -1,0 +1,13 @@
+<ion-view view-title="Teams">
+    <ion-content>
+        <ion-list>
+            <ion-item ng-repeat="team in teams" href="#/app/team-detail/{{team.key}}">
+                {{team.team_number}} {{team.name}}
+            </ion-item>
+        </ion-list>
+        <ion-infinite-scroll ng-if="moreDataCanBeLoaded()"
+                             icon="ion-loading-c"
+                             on-infinite="loadMoreData()">
+        </ion-infinite-scroll>
+    </ion-content>
+</ion-view>

@@ -1,0 +1,23 @@
+<ion-view>
+    <ion-nav-title>Team {{team.team_number}}</ion-nav-title>
+    <ion-content>
+        <div class="list card">
+            <div class="item">
+                <h2>{{team.name}}</h2>
+                <p>{{team.location}}</p>
+            </div>
+            <div class="item item-body" ng-show="team.nickname">
+                <span>{{team.nickname}}</span>
+            </div>
+            <div class="item item-body" ng-show="team.motto">
+                <span>{{team.motto}}</span>
+            </div>
+            <div class="item item-body" ng-show="team.rookie_year">
+                Rookie year: <span>{{team.rookie_year}}</span>
+            </div>
+            <div class="item item-body" ng-show="team.website">
+                <a href="{{team.website}}">{{team.website}}</a>
+            </div>
+        </div>
+    </ion-content>
+</ion-view>
