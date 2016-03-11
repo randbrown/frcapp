@@ -1,5 +1,5 @@
 <ion-view>
-    <ion-nav-title>{{event.short_name}}</ion-nav-title>
+    <ion-nav-title>{{event.name}}</ion-nav-title>
     <ion-content>
         <div class="list card">
             <div class="item">
@@ -33,17 +33,17 @@
                     Match count: {{matches.length}}
                 </div>
             </div>
-            
-            <div class="card" ng-show="teams">
-                <div class="item item-divider">
-                   Teams
-                </div>
-                    <ion-list>
-                        <ion-item ng-repeat="team in teams | orderBy: teamNumberInt" href="#/app/team-detail/{{team.key}}">
-                            {{team.team_number}} {{team.name}}
-                        </ion-item>
-                    </ion-list>
-                </div>
 
-</ion-content>
+            <div class="card" ng-show="teams && teams.length">
+                <div class="item item-divider">
+                    Teams
+                </div>
+                <ion-list>
+                    <ion-item ng-repeat="team in teams | orderBy: teamNumberInt" href="#/app/team-detail/{{team.key}}">
+                        {{team.team_number}} {{team.name}}
+                    </ion-item>
+                </ion-list>
+            </div>
+
+    </ion-content>
 </ion-view>

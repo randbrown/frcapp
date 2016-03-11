@@ -43,9 +43,13 @@ angular.module('starter.controllers', [])
 
 .controller('TeamCtrl', function ($scope, $stateParams, frcapiService) {
 
+    $scope.year = 2016;
     $scope.team = {};
     frcapiService.getTeam($stateParams.key).then(function (response) {
         $scope.team = response.data;
+    })
+    frcapiService.getTeamEvents($stateParams.key, $scope.year).then(function (response) {
+        $scope.events = response.data;
     })
 
 })

@@ -19,5 +19,17 @@
                 <a href="{{team.website}}">{{team.website}}</a>
             </div>
         </div>
+
+
+        <div class="card" ng-show="events && events.length">
+            <div class="item item-divider">
+                Events
+            </div>
+            <ion-list>
+                <ion-item ng-repeat="event in events | orderBy: start_date" href="#/app/event-detail/{{event.key}}">
+                    <span>{{event.name}}</span> <span style="float: right;">{{event.start_date}}</span>
+                </ion-item>
+            </ion-list>
+        </div>
     </ion-content>
 </ion-view>

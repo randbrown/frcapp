@@ -57,6 +57,14 @@ angular.module('starter.services', [])
         });
     }
 
+    function getTeamEventsFunc(teamKey, year) {
+        return $http({
+            method: 'GET',
+            url: 'http://www.thebluealliance.com/api/v2/team/' + teamKey + '/' + year + '/events',
+            headers: config.headers
+        });
+    }
+
     return {
         getTeams: getTeamsFunc,
         getTeam: getTeamFunc,
@@ -64,6 +72,7 @@ angular.module('starter.services', [])
         getEvent: getEventFunc,
         getEventTeams: getEventTeamsFunc,
         getEventMatches: getEventMatchesFunc,
+        getTeamEvents: getTeamEventsFunc,
 
     }
 }
