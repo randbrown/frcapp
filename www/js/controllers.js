@@ -12,16 +12,19 @@ angular.module('starter.controllers', [])
 })
 
 .controller('TeamsCtrl', function ($scope, $stateParams, frcapiService) {
+    $scope.loadCompleted = false;
     $scope.pageNumber = 0;
     $scope.allTeamsLoaded = false;
     $scope.teams = [];
     frcapiService.getTeams($scope.pageNumber).then(function (response) {
         $scope.teams = response.data;
+        $scope.loadCompleted = true;
     })
 
     $scope.loadMoreData = function () {
         $scope.pageNumber = $scope.pageNumber + 1;
         console.log("loading page number: " + $scope.pageNumber);
+        $scope.loadCompleted = false;
         frcapiService.getTeams($scope.pageNumber).then(function (response) {
 
             if (response.data && response.data.length) {
@@ -32,6 +35,7 @@ angular.module('starter.controllers', [])
 
                 $scope.allTeamsLoaded = true;
             }
+            $scope.loadCompleted = true;
             $scope.$broadcast('scroll.infiniteScrollComplete');
         })
     }
@@ -43,10 +47,12 @@ angular.module('starter.controllers', [])
 
 .controller('TeamCtrl', function ($scope, $stateParams, frcapiService) {
 
+    $scope.loadCompleted = false;
     $scope.year = 2016;
     $scope.team = {};
     frcapiService.getTeam($stateParams.key).then(function (response) {
         $scope.team = response.data;
+        $scope.loadCompleted = true;
     })
     frcapiService.getTeamEvents($stateParams.key, $scope.year).then(function (response) {
         $scope.events = response.data;
@@ -56,17 +62,22 @@ angular.module('starter.controllers', [])
     .controller('EventsCtrl', function ($scope, $stateParams, frcapiService) {
         $scope.year = 2016;
         $scope.events = [];
+        $scope.loadCompleted = false;
         frcapiService.getEvents($scope.year).then(function (response) {
             $scope.events = response.data;
+            $scope.loadCompleted = true;
         })
 
     })
 
 .controller('EventCtrl', function ($scope, $stateParams, frcapiService) {
 
+    $scope.loadCompleted = false;
     $scope.event = {};
     frcapiService.getEvent($stateParams.key).then(function (response) {
         $scope.event = response.data;
+
+        $scope.loadCompleted = true;
     })
     frcapiService.getEventTeams($stateParams.key).then(function (response) {
         $scope.teams = response.data;

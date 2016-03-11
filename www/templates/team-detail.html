@@ -2,6 +2,7 @@
     <ion-nav-title>Team {{team.team_number}}</ion-nav-title>
     <ion-content>
         <div class="list card">
+            <ion-spinner icon="spiral" ng-hide="loadCompleted"></ion-spinner>
             <div class="item">
                 <h2>{{team.name}}</h2>
                 <p>{{team.location}}</p>

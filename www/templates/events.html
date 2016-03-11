@@ -1,5 +1,6 @@
 <ion-view view-title="Events">
     <ion-content>
+        <ion-spinner icon="spiral" ng-hide="loadCompleted"></ion-spinner>
         <ion-list>
             <ion-item ng-repeat="event in events | orderBy:'name'" href="#/app/event-detail/{{event.key}}">
                 <span>{{event.name}}</span> <span style="float: right;">{{event.start_date}}</span>

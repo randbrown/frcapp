@@ -2,6 +2,7 @@
     <ion-nav-title>{{event.name}}</ion-nav-title>
     <ion-content>
         <div class="list card">
+            <ion-spinner icon="spiral" ng-hide="loadCompleted"></ion-spinner>
             <div class="item">
                 <h2>{{event.name}}</h2>
                 <p>{{event.location}}</p>
