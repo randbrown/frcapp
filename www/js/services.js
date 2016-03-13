@@ -2,18 +2,23 @@
 angular.module('starter.services', [])
 .factory('frcapiService', function ($http) {
 
+    //var apiBaseUrl = 'https://frc-api.firstinspires.org/v2.0';
+    var apiBaseUrl = 'http://www.thebluealliance.com/api/v2';
+
+    //var token = ''
+
     var config = {
         headers: {
             //'Authorization': 'Basic d2VudHdvcnRobWFuOkNoYW5nZV9tZQ==',
             'Accept': 'application/json;odata=verbose',
-            'x-tba-app-id': 'frc3966:team-analysis:0.2'
+            'x-tba-app-id': 'frc3966:team-analysis:0.2',
         }
     };
 
     function getTeamsFunc(pageNum) {
         return $http({
             method: 'GET',
-            url: 'http://www.thebluealliance.com/api/v2/teams/' + pageNum,
+            url: apiBaseUrl + '/teams/' + pageNum,
             headers: config.headers
         });
     }
@@ -21,7 +26,7 @@ angular.module('starter.services', [])
     function getTeamFunc(teamKey) {
         return $http({
             method: 'GET',
-            url: 'http://www.thebluealliance.com/api/v2/team/' + teamKey,
+            url: apiBaseUrl + '/team/' + teamKey,
             headers: config.headers
         });
     }
@@ -30,14 +35,14 @@ angular.module('starter.services', [])
     function getEventsFunc(year) {
         return $http({
             method: 'GET',
-            url: 'http://www.thebluealliance.com/api/v2/events/' + year,
+            url: apiBaseUrl + '/events/' + year,
             headers: config.headers
         });
     }
     function getEventFunc(eventKey) {
         return $http({
             method: 'GET',
-            url: 'http://www.thebluealliance.com/api/v2/event/' + eventKey,
+            url: apiBaseUrl + '/event/' + eventKey,
             headers: config.headers
         });
     }
@@ -45,14 +50,14 @@ angular.module('starter.services', [])
     function getEventTeamsFunc(eventKey) {
         return $http({
             method: 'GET',
-            url: 'http://www.thebluealliance.com/api/v2/event/' + eventKey + '/teams',
+            url: apiBaseUrl + '/event/' + eventKey + '/teams',
             headers: config.headers
         });
     }
     function getEventMatchesFunc(eventKey) {
         return $http({
             method: 'GET',
-            url: 'http://www.thebluealliance.com/api/v2/event/' + eventKey + '/matches',
+            url: apiBaseUrl + '/event/' + eventKey + '/matches',
             headers: config.headers
         });
     }
@@ -60,7 +65,7 @@ angular.module('starter.services', [])
     function getTeamEventsFunc(teamKey, year) {
         return $http({
             method: 'GET',
-            url: 'http://www.thebluealliance.com/api/v2/team/' + teamKey + '/' + year + '/events',
+            url: apiBaseUrl + '/team/' + teamKey + '/' + year + '/events',
             headers: config.headers
         });
     }
