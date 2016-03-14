@@ -19,9 +19,7 @@
             <div class="item item-body" ng-show="team.website">
                 <a href="{{team.website}}">{{team.website}}</a>
             </div>
-            <div class="item item-body" ng-show="team">
-                <a href="#/app/team-history-events/{{team.key}}">Event History</a>
-            </div>
+            <a href="#/app/team-history-events/{{team.key}}" class="item item-body" ng-show="team">Event History</a>
         </div>
 
 
