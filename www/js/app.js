@@ -51,6 +51,17 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
         }
     }
 })
+
+.state('app.team-history-events', {
+    url: '/team-history-events/:key',
+    views: {
+        'menuContent': {
+            templateUrl: 'templates/team-history-events.html',
+            controller: 'TeamHistoryEventsCtrl',
+
+        }
+    }
+})
            .state('app.events', {
                url: '/events',
                views: {

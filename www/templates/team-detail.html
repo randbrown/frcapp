@@ -19,12 +19,15 @@
             <div class="item item-body" ng-show="team.website">
                 <a href="{{team.website}}">{{team.website}}</a>
             </div>
+            <div class="item item-body" ng-show="team">
+                <a href="#/app/team-history-events/{{team.key}}">Event History</a>
+            </div>
         </div>
 
 
         <div class="card" ng-show="events && events.length">
             <div class="item item-divider">
-                Events
+                Current Events
             </div>
             <ion-list>
                 <ion-item ng-repeat="event in events | orderBy: start_date" href="#/app/event-detail/{{event.key}}">

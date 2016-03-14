@@ -2,7 +2,7 @@
 angular.module('starter.services', [])
 .factory('frcapiService', function ($http) {
 
-    //var apiBaseUrl = 'https://frc-api.firstinspires.org/v2.0';
+   // var apiBaseUrl = 'http://frc-api.firstinspires.org/api/v2.0';
     var apiBaseUrl = 'http://www.thebluealliance.com/api/v2';
 
     //var token = ''
@@ -70,6 +70,20 @@ angular.module('starter.services', [])
         });
     }
 
+    function getTeamHistoryEventsFunc(teamKey) {
+        return $http({
+            method: 'GET',
+            url: apiBaseUrl + '/team/' + teamKey + '/history/events',
+            headers: config.headers
+        });
+    }
+    function getTeamAwardsFunc(teamKey) {
+        return $http({
+            method: 'GET',
+            url: apiBaseUrl + '/team/' + teamKey + '/history/awards',
+            headers: config.headers
+        });
+    }
     return {
         getTeams: getTeamsFunc,
         getTeam: getTeamFunc,
@@ -78,6 +92,8 @@ angular.module('starter.services', [])
         getEventTeams: getEventTeamsFunc,
         getEventMatches: getEventMatchesFunc,
         getTeamEvents: getTeamEventsFunc,
+        getTeamHistoryEvents: getTeamHistoryEventsFunc,
+        getTeamAwards: getTeamAwardsFunc,
 
     }
 }

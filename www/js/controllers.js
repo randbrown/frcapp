@@ -87,5 +87,22 @@ angular.module('starter.controllers', [])
         $scope.matches = response.data;
     })
 })
+
+    .controller('TeamHistoryEventsCtrl', function ($scope, $stateParams, frcapiService) {
+        $scope.team = {};
+        $scope.events = [];
+        $scope.loadCompleted = false;
+        frcapiService.getTeam($stateParams.key).then(function (response) {
+            $scope.team = response.data;
+            $scope.loadCompleted = true;
+        })
+        frcapiService.getTeamHistoryEvents($stateParams.key).then(function (response) {
+            $scope.events = response.data;
+        })
+        frcapiService.getTeamAwards($stateParams.key).then(function (response) {
+            $scope.awards = response.data;
+        })
+
+    })
 .controller('MatchCtrl', function ($scope, $stateParams) {
 });

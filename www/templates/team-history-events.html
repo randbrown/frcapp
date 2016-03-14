@@ -1,0 +1,26 @@
+<ion-view>
+    <ion-nav-title>Team {{team.team_number}} Event History</ion-nav-title>
+    <ion-content>
+        <ion-spinner icon="spiral" ng-hide="loadCompleted"></ion-spinner>
+        <div class="card" ng-show="awards">
+            <div class="item item-divider">
+                Awards
+            </div>
+            <ion-list>
+                <ion-item ng-repeat="award in awards | orderBy:'year'" href="#/app/event-detail/{{award.event_key}}">
+                    <span>{{award.name}}</span> <span style="float: right;">{{award.year}}</span>
+                </ion-item>
+            </ion-list>
+        </div>
+        <div class="card" ng-show="events">
+            <ion-list>
+                <div class="item item-divider">
+                    Events
+                </div>
+                <ion-item ng-repeat="event in events | orderBy:'start_date'" href="#/app/event-detail/{{event.key}}">
+                    <span>{{event.name}}</span> <span style="float: right;">{{event.start_date}}</span>
+                </ion-item>
+            </ion-list>
+        </div>
+    </ion-content>
+</ion-view>
