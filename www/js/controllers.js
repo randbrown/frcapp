@@ -52,13 +52,7 @@ angular.module('starter.controllers', [])
         });
         frcapiService.getTeamEvents($stateParams.key, $scope.year).then(function(response) {
             $scope.events = response.data;
-                if ($scope.events) {
-                    $scope.events.forEach(function(evt) {
-                        frcapiService.getEventRankings(evt.key).then(function(rsp) {
-                            evt.rankings = rsp.data; //todo check closure problem
-                        });
-                    });
-                }
+                
         })
     })
 
@@ -78,7 +72,11 @@ angular.module('starter.controllers', [])
         $scope.event = {};
         frcapiService.getEvent($stateParams.key).then(function(response) {
             $scope.event = response.data;
-
+            if ($scope.event) {
+                    frcapiService.getEventRankings($scope.event.key).then(function (rsp) {
+                       $scope.event.rankings = rsp.data; 
+                });
+            }
             $scope.loadCompleted = true;
         })
         frcapiService.getEventTeams($stateParams.key).then(function(response) {

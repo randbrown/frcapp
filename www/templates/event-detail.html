@@ -35,6 +35,19 @@
                 </div>
             </div>
 
+
+            <div class="card" ng-show="event && event.rankings && event.rankings.length">
+                <div class="item item-divider">
+                    Rankings
+                </div>
+                    <div class="row" ng-repeat="rankingArr in event.rankings">
+                        <span class="col col-10" ng-repeat="ranking in rankingArr">
+                            {{ranking}}
+                        </span>
+                </div>
+            </div>
+
+
             <div class="card" ng-show="teams && teams.length">
                 <div class="item item-divider">
                     Teams
