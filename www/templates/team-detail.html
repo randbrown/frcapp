@@ -30,6 +30,9 @@
             <ion-list>
                 <ion-item ng-repeat="event in events | orderBy: start_date" href="#/app/event-detail/{{event.key}}">
                     <span>{{event.name}}</span> <span style="float: right;">{{event.start_date}}</span>
+                    <ion-item ng-repeat="ranking in event.rankings">
+                        <span>{{ranking}}</span>
+                    </ion-item>
                 </ion-item>
             </ion-list>
         </div>

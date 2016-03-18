@@ -2,14 +2,18 @@
 angular.module('starter.services', [])
 .factory('frcapiService', function ($http) {
 
-   // var apiBaseUrl = 'http://frc-api.firstinspires.org/api/v2.0';
+    //var apiBaseUrl = 'https://frc-staging-api.firstinspires.org/api/v2.0';
     var apiBaseUrl = 'http://www.thebluealliance.com/api/v2';
 
-    //var token = ''
+
+    //        var authTokenHeaderValue = 'Basic cmFuZGJyb3duOjYwRUQ5NkE4LUI0OEEtNEEzNy1BMENCLThGQTk0MDE2M0JGNQ==';
 
     var config = {
         headers: {
-            //'Authorization': 'Basic d2VudHdvcnRobWFuOkNoYW5nZV9tZQ==',
+            // FIRST API
+            //'Authorization': authTokenHeaderValue,
+
+            // Blue Alliance:
             'Accept': 'application/json;odata=verbose',
             'x-tba-app-id': 'frc3966:team-analysis:0.2',
         }
@@ -61,6 +65,13 @@ angular.module('starter.services', [])
             headers: config.headers
         });
     }
+    function getEventRankingsFunc(eventKey) {
+        return $http({
+            method: 'GET',
+            url: apiBaseUrl + '/event/' + eventKey + '/rankings',
+            headers: config.headers
+        });
+    }
 
     function getTeamEventsFunc(teamKey, year) {
         return $http({
@@ -77,6 +88,7 @@ angular.module('starter.services', [])
             headers: config.headers
         });
     }
+
     function getTeamAwardsFunc(teamKey) {
         return $http({
             method: 'GET',
@@ -84,6 +96,7 @@ angular.module('starter.services', [])
             headers: config.headers
         });
     }
+
     return {
         getTeams: getTeamsFunc,
         getTeam: getTeamFunc,
@@ -94,6 +107,7 @@ angular.module('starter.services', [])
         getTeamEvents: getTeamEventsFunc,
         getTeamHistoryEvents: getTeamHistoryEventsFunc,
         getTeamAwards: getTeamAwardsFunc,
+        getEventRankings: getEventRankingsFunc,
 
     }
 }
