@@ -109,7 +109,8 @@ angular.module('starter.controllers', [])
     $scope.team = {};
     $scope.events = [];
     $scope.loadCompleted = false;
-    $scope.year = 2016;
+    $scope.year = '2016';
+    this.year = '2016';
     $scope.yearChanged = function () {
         $scope.getData(this.year);
     };
