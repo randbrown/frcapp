@@ -1,23 +1,32 @@
 <ion-view>
-    <ion-nav-title>STEMpunks Stats</ion-nav-title>
-    <ion-content>
-        <div class="list card">
-            <ion-spinner icon="spiral" ng-hide="loadCompleted"></ion-spinner>
-            <a href="#/app/team-history-events/frc3966" class="item item-body" ng-show="team">Event History</a>
-        </div>
+<ion-nav-title>STEMpunks Stats</ion-nav-title>
+<ion-content>
 
-        <div class="card" ng-show="events && events.length">
-            <div class="item item-divider">
-                Current Events
-            </div>
-            <ion-list>
-                <ion-item ng-repeat="event in events | orderBy: start_date" href="#/app/event-detail/{{event.key}}">
-                    <span>{{event.name}}</span> <span style="float: right;">{{event.start_date}}</span>
-                    <ion-item ng-repeat="ranking in event.rankings">
-                        <span>{{ranking}}</span>
-                    </ion-item>
-                </ion-item>
-            </ion-list>
+
+<div class="card" ng-show="events && events.length">
+    <div class="item item-divider">
+        Current Events
+    </div>
+    <ion-list>
+    <ion-item ng-repeat="event in events | orderBy: start_date" href="#/app/event-detail/{{event.key}}">
+    <span>{{event.name}}</span> <span style="float: right;">{{event.start_date}}</span>
+    <div class="card" ng-show="event && event.rankings && event.rankings.length">
+        <div class="item item-divider">
+            Rankings
         </div>
-    </ion-content>
+        <div class="row" ng-repeat="rankingArr in event.rankings">
+            <span class="col col-10" ng-repeat="ranking in rankingArr">
+                {{ranking}}
+            </span>
+        </div>
+    </div>
+    </ion-item>
+</ion-item>
+</ion-list>
+</div>
+<div class="list card">
+    <ion-spinner icon="spiral" ng-hide="loadCompleted"></ion-spinner>
+    <a href="#/app/team-history-events/frc3966" class="item item-body" ng-show="team">Event History</a>
+</div>
+</ion-content>
 </ion-view>

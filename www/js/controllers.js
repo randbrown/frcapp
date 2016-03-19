@@ -118,8 +118,15 @@ angular.module('starter.controllers', [])
             $scope.events = response.data;
             for (var i = 0; i < response.data.length; ++i) {
                 var evt = response.data[i];
+                evt.rankings = [];
                 frcapiService.getEventRankings(evt.key).then(function(rsp) {
-                    evt.rankings = rsp.data;//todo check closure problem
+                    //evt.rankings.push(rsp.data[0]);
+                    for (var j = 0; j < rsp.data.length; ++j) {
+                        var curD = rsp.data[j];
+                        if ((curD && curD[1] == "3966") || j == 0) {
+                            evt.rankings.push(curD);
+                        }
+                    }
                 });
             }
         })
